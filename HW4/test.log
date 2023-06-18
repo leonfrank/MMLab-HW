@@ -1,0 +1,12 @@
+06/18 19:35:28 - mmengine - INFO - per class results:
+06/18 19:35:28 - mmengine - INFO - 
++------------+-------+-------+
+|   Class    |  IoU  |  Acc  |
++------------+-------+-------+
+|    red     | 78.28 | 95.65 |
+|   green    | 72.45 |  77.8 |
+|   white    | 22.41 | 25.23 |
+| seed-black | 62.17 | 64.57 |
+| seed-white | 58.72 | 75.05 |
++------------+-------+-------+
+06/18 19:35:28 - mmengine - INFO - Iter(test) [11/11]    aAcc: 83.8200  mIoU: 58.8100  mAcc: 67.6600  data_time: 0.0160  time: 1.0402
