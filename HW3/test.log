@@ -1,10 +1,12 @@
-06/18 20:14:16 - mmengine - INFO - 
+06/18 21:59:29 - mmengine - INFO - 
 ------------------------------------------------------------
 System environment:
     sys.platform: linux
     Python: 3.9.13 | packaged by conda-forge | (main, May 27 2022, 16:56:21) [GCC 10.3.0]
-    CUDA available: False
-    numpy_random_seed: 1461017238
+    CUDA available: True
+    numpy_random_seed: 383939139
+    GPU 0: NVIDIA Tesla T4
+    CUDA_HOME: None
     GCC: gcc (Debian 10.2.1-6) 10.2.1 20210110
     PyTorch: 1.10.1
     PyTorch compiling details: PyTorch built with:
@@ -16,7 +18,11 @@ System environment:
   - LAPACK is enabled (usually provided by MKL)
   - NNPACK is enabled
   - CPU capability usage: AVX512
-  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CXX_COMPILER=/opt/rh/devtoolset-7/root/usr/bin/c++, CXX_FLAGS= -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DLIBKINETO_NOCUPTI -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable -Wno-unused-function -Wno-unused-result -Wno-unused-local-typedefs -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.10.1, USE_CUDA=0, USE_CUDNN=OFF, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=OFF, USE_NNPACK=ON, USE_OPENMP=ON, 
+  - CUDA Runtime 11.1
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_61,code=sm_61;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86;-gencode;arch=compute_37,code=compute_37
+  - CuDNN 8.0.5
+  - Magma 2.5.2
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.1, CUDNN_VERSION=8.0.5, CXX_COMPILER=/opt/rh/devtoolset-7/root/usr/bin/c++, CXX_FLAGS= -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable -Wno-unused-function -Wno-unused-result -Wno-unused-local-typedefs -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.10.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, 
 
     TorchVision: 0.11.2
     OpenCV: 4.7.0
@@ -32,7 +38,7 @@ Runtime environment:
     GPU number: 1
 ------------------------------------------------------------
 
-06/18 20:14:17 - mmengine - INFO - Config:
+06/18 21:59:30 - mmengine - INFO - Config:
 default_scope = 'mmdet'
 default_hooks = dict(
     timer=dict(type='IterTimerHook'),
@@ -55,7 +61,7 @@ visualizer = dict(
     name='visualizer')
 log_processor = dict(type='LogProcessor', window_size=50, by_epoch=True)
 log_level = 'INFO'
-load_from = 'work_dirs/rtmdet_cat/best_coco/bbox_mAP_epoch_40.pth'
+load_from = 'work_dirs/rtmdet_balloon/best_coco/bbox_mAP_epoch_40.pth'
 resume = False
 train_cfg = dict(
     type='EpochBasedTrainLoop',
@@ -82,7 +88,7 @@ optim_wrapper = dict(
         norm_decay_mult=0, bias_decay_mult=0, bypass_duplicate=True))
 auto_scale_lr = dict(enable=False, base_batch_size=16)
 dataset_type = 'CocoDataset'
-data_root = 'data/cat_dataset/'
+data_root = 'data/balloon/'
 backend_args = None
 train_pipeline = [
     dict(type='LoadImageFromFile', backend_args=None),
@@ -130,9 +136,9 @@ train_dataloader = dict(
     batch_sampler=None,
     dataset=dict(
         type='CocoDataset',
-        data_root='data/cat_dataset/',
-        ann_file='annotations/trainval.json',
-        data_prefix=dict(img='images/'),
+        data_root='data/balloon/',
+        ann_file='train/balloon_train.json',
+        data_prefix=dict(img='train/'),
         filter_cfg=dict(filter_empty_gt=True, min_size=32),
         pipeline=[
             dict(type='LoadImageFromFile', backend_args=None),
@@ -165,7 +171,7 @@ train_dataloader = dict(
             dict(type='PackDetInputs')
         ],
         backend_args=None,
-        metainfo=dict(classes=('cat', ), palette=[(220, 20, 60)])),
+        metainfo=dict(classes=('balloon', ), palette=[(220, 20, 60)])),
     pin_memory=False)
 val_dataloader = dict(
     batch_size=4,
@@ -175,9 +181,9 @@ val_dataloader = dict(
     sampler=dict(type='DefaultSampler', shuffle=False),
     dataset=dict(
         type='CocoDataset',
-        data_root='data/cat_dataset/',
-        ann_file='annotations/test.json',
-        data_prefix=dict(img='images/'),
+        data_root='data/balloon/',
+        ann_file='val/balloon_val.json',
+        data_prefix=dict(img='val/'),
         test_mode=True,
         pipeline=[
             dict(type='LoadImageFromFile', backend_args=None),
@@ -192,7 +198,7 @@ val_dataloader = dict(
                            'scale_factor'))
         ],
         backend_args=None,
-        metainfo=dict(classes=('cat', ), palette=[(220, 20, 60)])))
+        metainfo=dict(classes=('balloon', ), palette=[(220, 20, 60)])))
 test_dataloader = dict(
     batch_size=4,
     num_workers=1,
@@ -201,9 +207,9 @@ test_dataloader = dict(
     sampler=dict(type='DefaultSampler', shuffle=False),
     dataset=dict(
         type='CocoDataset',
-        data_root='data/cat_dataset/',
-        ann_file='annotations/test.json',
-        data_prefix=dict(img='images/'),
+        data_root='data/balloon/',
+        ann_file='val/balloon_val.json',
+        data_prefix=dict(img='val/'),
         test_mode=True,
         pipeline=[
             dict(type='LoadImageFromFile', backend_args=None),
@@ -218,17 +224,17 @@ test_dataloader = dict(
                            'scale_factor'))
         ],
         backend_args=None,
-        metainfo=dict(classes=('cat', ), palette=[(220, 20, 60)])))
+        metainfo=dict(classes=('balloon', ), palette=[(220, 20, 60)])))
 val_evaluator = dict(
     type='CocoMetric',
-    ann_file='data/cat_dataset/annotations/test.json',
+    ann_file='data/balloon/val/balloon_val.json',
     metric='bbox',
     format_only=False,
     backend_args=None,
     proposal_nums=(100, 1, 10))
 test_evaluator = dict(
     type='CocoMetric',
-    ann_file='data/cat_dataset/annotations/test.json',
+    ann_file='data/balloon/val/balloon_val.json',
     metric='bbox',
     format_only=False,
     backend_args=None,
@@ -389,7 +395,7 @@ custom_hooks = [
         ])
 ]
 checkpoint = 'https://download.openmmlab.com/mmdetection/v3.0/rtmdet/cspnext_rsb_pretrain/cspnext-tiny_imagenet_600e.pth'
-metainfo = dict(classes=('cat', ), palette=[(220, 20, 60)])
+metainfo = dict(classes=('balloon', ), palette=[(220, 20, 60)])
 num_classes = 1
 train_batch_size_per_gpu = 16
 train_num_workers = 1
@@ -397,10 +403,10 @@ val_batch_size_per_gpu = 4
 val_num_workers = 1
 num_epochs_stage2 = 5
 launcher = 'none'
-work_dir = './work_dirs/rtmdet_cat'
+work_dir = './work_dirs/rtmdet_balloon'
 
-06/18 20:14:19 - mmengine - INFO - Distributed training is not used, all SyncBatchNorm (SyncBN) layers in the model will be automatically reverted to BatchNormXd layers if they are used.
-06/18 20:14:19 - mmengine - INFO - Hooks will be executed in the following order:
+06/18 21:59:36 - mmengine - INFO - Distributed training is not used, all SyncBatchNorm (SyncBN) layers in the model will be automatically reverted to BatchNormXd layers if they are used.
+06/18 21:59:36 - mmengine - INFO - Hooks will be executed in the following order:
 before_run:
 (VERY_HIGH   ) RuntimeInfoHook                    
 (49          ) EMAHook                            
@@ -493,11 +499,9 @@ loading annotations into memory...
 Done (t=0.00s)
 creating index...
 index created!
-Loads checkpoint by local backend from path: work_dirs/rtmdet_cat/best_coco/bbox_mAP_epoch_40.pth
-06/18 20:14:21 - mmengine - INFO - Load checkpoint from work_dirs/rtmdet_cat/best_coco/bbox_mAP_epoch_40.pth
-/usr/local/envs/ssenv/lib/python3.9/site-packages/torch/autocast_mode.py:141: UserWarning: User provided device_type of 'cuda', but CUDA is not available. Disabling
-  warnings.warn('User provided device_type of \'cuda\', but CUDA is not available. Disabling')
-/usr/local/envs/ssenv/lib/python3.9/site-packages/torch/functional.py:445: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at  /opt/conda/conda-bld/pytorch_1639180507909/work/aten/src/ATen/native/TensorShape.cpp:2157.)
+Loads checkpoint by local backend from path: work_dirs/rtmdet_balloon/best_coco/bbox_mAP_epoch_40.pth
+06/18 21:59:38 - mmengine - INFO - Load checkpoint from work_dirs/rtmdet_balloon/best_coco/bbox_mAP_epoch_40.pth
+/usr/local/envs/ssenv/lib/python3.9/site-packages/torch/functional.py:445: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at  /opt/conda/conda-bld/pytorch_1639180585800/work/aten/src/ATen/native/TensorShape.cpp:2157.)
   return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
 /home/openinnolab/work/current/mmdetection/mmdet/visualization/palette.py:90: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
   scales = 0.5 + (areas - min_area) // (max_area - min_area)
@@ -505,28 +509,27 @@ Loads checkpoint by local backend from path: work_dirs/rtmdet_cat/best_coco/bbox
   warnings.warn(
 /usr/local/envs/ssenv/lib/python3.9/site-packages/mmengine/visualization/visualizer.py:812: UserWarning: Warning: The polygon is out of bounds, the drawn polygon may not be in the image
   warnings.warn(
-06/18 20:15:14 - mmengine - INFO - Epoch(test) [5/7]    eta: 0:00:18  time: 9.0771  data_time: 7.4241  
-06/18 20:15:33 - mmengine - INFO - Evaluating bbox...
+06/18 21:59:46 - mmengine - INFO - Evaluating bbox...
 Loading and preparing results...
-DONE (t=0.01s)
+DONE (t=0.00s)
 creating index...
 index created!
 Running per image evaluation...
 Evaluate annotation type *bbox*
-DONE (t=0.09s).
+DONE (t=0.11s).
 Accumulating evaluation results...
-DONE (t=0.01s).
- Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.859
- Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.993
- Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.927
- Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = -1.000
- Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = -1.000
- Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.859
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.847
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.910
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.910
- Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = -1.000
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = -1.000
- Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.910
-06/18 20:15:33 - mmengine - INFO - bbox_mAP_copypaste: 0.859 0.993 0.927 -1.000 -1.000 0.859
-06/18 20:15:33 - mmengine - INFO - Epoch(test) [7/7]  coco/bbox_mAP: 0.8590  coco/bbox_mAP_50: 0.9930  coco/bbox_mAP_75: 0.9270  coco/bbox_mAP_s: -1.0000  coco/bbox_mAP_m: -1.0000  coco/bbox_mAP_l: 0.8590  data_time: 7.6498  time: 9.1282
+DONE (t=0.02s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.752
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.854
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.827
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.409
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.884
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.238
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.790
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.834
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.733
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.914
+06/18 21:59:46 - mmengine - INFO - bbox_mAP_copypaste: 0.752 0.854 0.827 0.000 0.409 0.884
+06/18 21:59:46 - mmengine - INFO - Epoch(test) [4/4]  coco/bbox_mAP: 0.7520  coco/bbox_mAP_50: 0.8540  coco/bbox_mAP_75: 0.8270  coco/bbox_mAP_s: 0.0000  coco/bbox_mAP_m: 0.4090  coco/bbox_mAP_l: 0.8840  data_time: 1.5675  time: 1.8795
